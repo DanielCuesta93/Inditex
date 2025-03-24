@@ -1,13 +1,37 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>ZARA | Consulta Precios</title>
     <script type="text/javascript" th:src="@{/js/prices.js}"></script>
-    <title>ZARA | Prices</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<header></header>
+<header>
+	<h1>Consulta de Precios</h1>
+</header>
 <main>	
+	<form id="priceForm">
+		<div>
+			<label for="fechaConsulta">Fecha de Consulta:</label>
+			<input type="datetime-local" id="fechaConsulta" name="fechaConsulta" required>
+		</div>
+		
+		<div>
+			<label for="productoId">ID del Producto:</label>
+			<input type="number" id="productoId" name="productoId" required>
+		</div>
+		
+		<div>
+			<label for="marcaId">ID de la Marca:</label>
+			<input type="number" id="marcaId" name="marcaId" required>
+		</div>
+		
+		<button type="submit">Consultar Precio</button>
+	</form>
 	
+	<div id="result">
+    </div>
 </main>
 
 </body>
