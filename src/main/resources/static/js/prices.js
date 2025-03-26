@@ -30,15 +30,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(data => {
                     // Mostrar los resultados
                     const resultDiv = document.getElementById('result');
-                    resultDiv.innerHTML = `
-                        <h2>Resultado de la consulta</h2>
-                        <p><strong>ID Producto:</strong> ${data.productId}</p>
-                        <p><strong>ID Marca:</strong> ${data.brandId}</p>
-                        <p><strong>Tarifa:</strong> ${data.priceList}</p>
-                        <p><strong>Fecha de Inicio:</strong> ${data.startDate}</p>
-                        <p><strong>Fecha de Fin:</strong> ${data.endDate}</p>
-                        <p><strong>Precio Final:</strong> ${data.price} ${data.currency}</p>
-                    `;
+                    resultDiv.innerHTML = `<h2>Resultados de la consulta</h2>`;
+                    data.forEach(price => {
+                            resultDiv.innerHTML += `
+                                <div class="price-result">
+                                    <p><strong>ID Producto:</strong> ${price.productId}</p>
+                                    <p><strong>ID Marca:</strong> ${price.brandId}</p>
+                                    <p><strong>Tarifa:</strong> ${price.priceList}</p>
+                                    <p><strong>Fecha de Inicio:</strong> ${price.startDateFormat}</p>
+                                    <p><strong>Fecha de Fin:</strong> ${price.endDateFormat}</p>
+                                    <p><strong>Precio Final:</strong> ${price.price} ${price.currency}</p>
+                                    <hr>
+                                </div>
+                            `;
+                    });
                 })
                 .catch(error => {
                     // Manejar errores

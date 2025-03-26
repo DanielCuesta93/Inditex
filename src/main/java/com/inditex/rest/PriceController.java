@@ -1,5 +1,7 @@
 package com.inditex.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,16 +27,16 @@ public class PriceController {
     }
     
     @GetMapping("/api/price")
-    public ResponseEntity<PriceResponse> getPrice(@RequestParam String fechaConsulta,
+    public ResponseEntity<List<PriceResponse>> getPrice(@RequestParam String fechaConsulta,
                                                   @RequestParam int productoId,
                                                   @RequestParam int marcaId) {
         // Lógica para obtener los precios a partir de los parámetros
-        PriceResponse price = priceService.getPrice(fechaConsulta, productoId, marcaId);
+    	List<PriceResponse> prices = priceService.getPrice(fechaConsulta, productoId, marcaId);
 
-        if (price == null) {
+        if (prices == null) {
             return ResponseEntity.status(404).body(null);  // NOT_FOUND
         }
 
-        return ResponseEntity.ok(price);  // Devuelve el precio en formato JSON
+        return ResponseEntity.ok(prices);  // Devuelve el precio en formato JSON
     }
 }

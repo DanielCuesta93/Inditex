@@ -1,6 +1,7 @@
 package com.inditex.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class PriceService implements IPriceService {
     private PriceRepository priceRepository;
 	
 	@Override
-	public PriceResponse getPrice(String fechaConsulta, int productoId, int marcaId) {
+	public List<PriceResponse> getPrice(String fechaConsulta, int productoId, int marcaId) {
 		
 		Timestamp consultaFecha = Timestamp.valueOf(fechaConsulta);
 
@@ -28,17 +29,21 @@ public class PriceService implements IPriceService {
             return null;
         }
 
-        Prices mejorPrecio = precios.get(0);
-
-        return new PriceResponse(
-                mejorPrecio.getProductId(),
-                mejorPrecio.getBrandId(),
-                mejorPrecio.getPriceList(),
-                mejorPrecio.getStartDate(),
-                mejorPrecio.getEndDate(),
-                mejorPrecio.getPrice(),
-                mejorPrecio.getCurr()
-        );
+        List<PriceResponse> listprices = new ArrayList<>();
+        
+		for (Prices precio : precios) {
+			listprices.add(new PriceResponse(
+					precio.getProductId(), 
+					precio.getBrandId(), 
+					precio.getPriceList(), 
+					precio.getStartDate(),
+					precio.getEndDate(), 
+					precio.getPrice(), 
+					precio.getCurr()
+			));
+		}
+        
+        return listprices;
 	}
 
 }

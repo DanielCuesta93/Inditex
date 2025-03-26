@@ -9,7 +9,9 @@ public class PriceResponse {
     private int brandId;
     private int priceList;
     private Timestamp startDate;
+    private String startDateFormat;
     private Timestamp endDate;
+    private String endDateFormat;
     private BigDecimal price;
     private String currency;
 
@@ -18,7 +20,9 @@ public class PriceResponse {
         this.brandId = brandId;
         this.priceList = priceList;
         this.startDate = startDate;
+        this.startDateFormat = startDate.toString().replace(".0", "");        
         this.endDate = endDate;
+        this.endDateFormat = endDate.toString().replace(".0", "");
         this.price = price;
         this.currency = currency;
     }
@@ -55,7 +59,15 @@ public class PriceResponse {
         this.startDate = startDate;
     }
 
-    public Timestamp getEndDate() {
+    public String getStartDateFormat() {
+		return startDateFormat;
+	}
+
+	public void setStartDateFormat(String startDateFormat) {
+		this.startDateFormat = startDateFormat;
+	}
+
+	public Timestamp getEndDate() {
         return endDate;
     }
 
@@ -63,7 +75,15 @@ public class PriceResponse {
         this.endDate = endDate;
     }
 
-    public BigDecimal getPrice() {
+    public String getEndDateFormat() {
+		return endDateFormat;
+	}
+
+	public void setEndDateFormat(String endDateFormat) {
+		this.endDateFormat = endDateFormat;
+	}
+
+	public BigDecimal getPrice() {
         return price;
     }
 
