@@ -3,7 +3,6 @@ package com.inditex.model.entitys;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,21 +13,25 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="PRICES")
-public class Price implements Serializable{
+public class Prices implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	@Column(name="BRAND_ID")
-	private Integer brand_id;
+	private Integer brandId;
 	@Column(name="START_DATE")
-	private LocalDateTime  start_date;
+	private Timestamp   startDate;
 	@Column(name="END_DATE")
-	private LocalDateTime  end_date;
-	@Column(name="PRICE_LIT")
-	private Integer price_list;
+	private Timestamp   endDate;
+	@Column(name="PRICE_LIST")
+	private Integer priceList;
 	@Column(name="PRODUCT_ID")
-	private Integer product_id;
+	private Integer productId;
 	@Column(name="PRIORITY")
 	private Integer priority;
 	@Column(name="PRICE")
@@ -37,35 +40,35 @@ public class Price implements Serializable{
 	private String curr;
 	
 	
-	public Integer getBrand_id() {
-		return brand_id;
+	public Integer getBrandId() {
+		return brandId;
 	}
-	public void setBrand_id(Integer brand_id) {
-		this.brand_id = brand_id;
+	public void setBrandId(Integer brandId) {
+		this.brandId = brandId;
 	}
-	public LocalDateTime getStart_date() {
-		return start_date;
+	public Timestamp getStartDate() {
+		return startDate;
 	}
-	public void setStart_date(LocalDateTime start_date) {
-		this.start_date = start_date;
+	public void setStartdate(Timestamp startDate) {
+		this.startDate = startDate;
 	}
-	public LocalDateTime getEnd_date() {
-		return end_date;
+	public Timestamp getEndDate() {
+		return endDate;
 	}
-	public void setEnd_date(LocalDateTime end_date) {
-		this.end_date = end_date;
+	public void setEndDate(Timestamp endDate) {
+		this.endDate = endDate;
 	}
-	public Integer getPrice_list() {
-		return price_list;
+	public Integer getPriceList() {
+		return priceList;
 	}
-	public void setPrice_list(Integer price_list) {
-		this.price_list = price_list;
+	public void setPriceList(Integer priceList) {
+		this.priceList = priceList;
 	}
-	public Integer getProduct_id() {
-		return product_id;
+	public Integer getProductId() {
+		return productId;
 	}
-	public void setProduct_id(Integer product_id) {
-		this.product_id = product_id;
+	public void setProduct_id(Integer productId) {
+		this.productId = productId;
 	}
 	public Integer getPriority() {
 		return priority;
